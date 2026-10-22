@@ -1,0 +1,35 @@
+ARUN KUMAR
+Full Stack Developer | Chennai, India
+arun.kumar@example.com | +91 98765 43210 | linkedin.com/in/arunkumar-dev | github.com/arunk
+
+PROFESSIONAL SUMMARY
+Full stack developer with 2+ years of experience building responsive web applications with the MERN stack.
+Comfortable owning features end to end, from MongoDB schema design to React UI and CI/CD deployment.
+
+TECHNICAL SKILLS
+Languages: JavaScript, TypeScript, HTML5, CSS3, SQL
+Frontend: React.js, Redux Toolkit, Next.js, Tailwind CSS, Bootstrap
+Backend: Node.js, Express.js, REST APIs, JWT authentication, Socket.io
+Databases: MongoDB, Mongoose, MySQL, Redis
+Tools: Git, GitHub Actions, Docker, Postman, Jest, Jira
+
+WORK EXPERIENCE
+Software Developer - BrightLeaf Technologies, Chennai | Jul 2023 - Present
+- Developed a multi-tenant HR portal in React and Node.js used by 40+ client companies and 12k employees.
+- Designed REST APIs with Express and MongoDB, reducing average response time by 35% through indexing and caching with Redis.
+- Implemented JWT based role access control and automated deployments with Docker and GitHub Actions.
+- Mentored 2 interns and led code reviews for the frontend team.
+
+Web Developer Intern - PixelCraft Studio | Jan 2023 - Jun 2023
+- Built 6 responsive landing pages with React and Tailwind CSS, improving Lighthouse performance score to 95.
+- Wrote unit tests with Jest, increasing coverage from 40% to 78%.
+
+PROJECTS
+Real-time Chat App - React, Node.js, Socket.io, MongoDB: group chat with typing indicators and 200 concurrent users.
+E-commerce Store - Next.js, Stripe, MongoDB: product catalogue, cart and payment integration.
+
+EDUCATION
+B.E. Computer Science and Engineering, Anna University, 2019 - 2023, CGPA 8.4
+
+CERTIFICATIONS
+Meta Front-End Developer Certificate, MongoDB Associate Developer

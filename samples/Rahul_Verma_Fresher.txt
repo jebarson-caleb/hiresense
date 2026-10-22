@@ -1,0 +1,22 @@
+RAHUL VERMA
+Computer Science Graduate
+rahul.verma@example.com | +91 99887 66554 | github.com/rahulv
+
+OBJECTIVE
+Final year computer science student seeking a software engineering internship or graduate role where I can
+apply strong fundamentals in Java, data structures and web development.
+
+SKILLS
+Java, C, C++, Python, Data Structures and Algorithms, OOP, HTML, CSS, JavaScript, MySQL, Git, Linux
+
+PROJECTS
+Library Management System - Java, MySQL, JDBC: desktop app to issue and track 2,000 books.
+Personal Portfolio Website - HTML, CSS, JavaScript: responsive portfolio deployed on Netlify.
+Pathfinding Visualizer - JavaScript: visualises Dijkstra and A* algorithms on a grid.
+
+ACHIEVEMENTS
+Solved 400+ problems on LeetCode and CodeChef. Finalist in college hackathon 2024.
+
+EDUCATION
+B.Tech Computer Science, VIT Vellore, 2021 - 2025, CGPA 8.1
+Higher Secondary (CBSE), 2021, 92%

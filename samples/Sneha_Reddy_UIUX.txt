@@ -1,0 +1,23 @@
+SNEHA REDDY
+UI/UX Designer
+sneha.reddy@example.com | +91 98450 12345 | behance.net/snehareddy
+
+ABOUT ME
+Product designer with 2 years of experience designing mobile and web experiences. I enjoy user research,
+wireframing and turning complex flows into simple interfaces.
+
+SKILLS
+Figma, Adobe XD, Adobe Photoshop, Adobe Illustrator, Wireframing, Prototyping, User Research, UI/UX,
+HTML, CSS, Responsive Design, Web Accessibility, Communication
+
+EXPERIENCE
+UI/UX Designer - Nimbus Apps | May 2023 - Present
+- Redesigned onboarding flow for a fintech app, increasing sign-up completion by 22%.
+- Created a design system in Figma with 120+ components used by 3 product squads.
+- Ran 15 usability tests and translated findings into prioritised design improvements.
+
+Design Intern - Creative Hive | Nov 2022 - Apr 2023
+- Designed social media creatives and landing page mockups for 10 clients.
+
+EDUCATION
+Bachelor of Design (Interaction Design), NIFT Hyderabad, 2019 - 2023

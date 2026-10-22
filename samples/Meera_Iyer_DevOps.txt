@@ -1,0 +1,27 @@
+MEERA IYER
+Senior DevOps Engineer | Hyderabad
+meera.iyer@example.com | +91 90000 11223 | linkedin.com/in/meeraiyer
+
+PROFILE
+DevOps engineer with 5 years of experience automating cloud infrastructure on AWS and Azure. Passionate about
+reliable CI/CD, observability and developer productivity.
+
+CORE SKILLS
+AWS, Azure, Docker, Kubernetes, Helm, Terraform, Ansible, Jenkins, GitHub Actions, CI/CD, Linux, Bash, Python,
+Prometheus, Grafana, Nginx, PostgreSQL
+
+EXPERIENCE
+Senior DevOps Engineer - CloudNine Systems | Mar 2022 - Present
+- Migrated 30 microservices to Kubernetes (EKS) with Helm, cutting infrastructure cost by 28%.
+- Built Terraform modules used by 8 product teams to provision environments in under 15 minutes.
+- Introduced Prometheus and Grafana monitoring, reducing mean time to recovery by 45%.
+
+DevOps Engineer - Infosys | Jun 2019 - Feb 2022
+- Automated build and release pipelines with Jenkins for 20 applications.
+- Managed Linux servers and Ansible playbooks for configuration management.
+
+EDUCATION
+B.Tech Information Technology, JNTU Hyderabad, 2015 - 2019
+
+CERTIFICATIONS
+AWS Certified Solutions Architect - Associate, Certified Kubernetes Administrator (CKA)

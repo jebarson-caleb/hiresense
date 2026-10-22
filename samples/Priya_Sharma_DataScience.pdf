@@ -1,0 +1,109 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [6 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Length 2141 >>
+stream
+BT
+50 792 Td
+14 TL
+/F2 11.5 Tf
+(PRIYA SHARMA) Tj T*
+/F1 10.5 Tf
+(Data Scientist | Bengaluru) Tj T*
+/F1 10.5 Tf
+(priya.sharma@example.com | +91 91234 56789 | github.com/priyasharma-ds) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F2 11.5 Tf
+(SUMMARY) Tj T*
+/F1 10.5 Tf
+(Data scientist with 3 years of experience in machine learning, NLP and analytics. Experienced) Tj T*
+/F1 10.5 Tf
+(  in turning) Tj T*
+/F1 10.5 Tf
+(business questions into models and dashboards that drive decisions.) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F2 11.5 Tf
+(SKILLS) Tj T*
+/F1 10.5 Tf
+(Python, SQL, R, Pandas, NumPy, scikit-learn, TensorFlow, PyTorch, Natural Language Processing,) Tj T*
+/F1 10.5 Tf
+(Hugging Face Transformers, LangChain, Power BI, Tableau, Statistics, Apache Spark, AWS, Git,) Tj T*
+/F1 10.5 Tf
+(  Jupyter) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F2 11.5 Tf
+(EXPERIENCE) Tj T*
+/F1 10.5 Tf
+(Data Scientist - InsightAxis Analytics | Aug 2021 - Present) Tj T*
+/F1 10.5 Tf
+(- Built a customer churn prediction model with XGBoost and scikit-learn that improved retention) Tj T*
+/F1 10.5 Tf
+(  campaigns by 18%.) Tj T*
+/F1 10.5 Tf
+(- Developed an NLP pipeline using Hugging Face transformers to classify 50k support tickets per) Tj T*
+/F1 10.5 Tf
+(  month with 91% accuracy.) Tj T*
+/F1 10.5 Tf
+(- Created Power BI dashboards for leadership tracking KPIs across 6 business units.) Tj T*
+/F1 10.5 Tf
+(- Deployed models as FastAPI services on AWS with Docker.) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F1 10.5 Tf
+(Data Analyst Intern - RetailMart | Jan 2021 - Jul 2021) Tj T*
+/F1 10.5 Tf
+(- Analysed sales data with SQL and Pandas and identified pricing changes worth 2.3% margin) Tj T*
+/F1 10.5 Tf
+(  uplift.) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F2 11.5 Tf
+(PROJECTS) Tj T*
+/F1 10.5 Tf
+(Resume Screening with LLMs - Python, LangChain, Ollama, RAG: semantic matching of resumes to) Tj T*
+/F1 10.5 Tf
+(  job descriptions.) Tj T*
+/F1 10.5 Tf
+(Sales Forecasting - Prophet and Tableau for a 12-month demand forecast.) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F2 11.5 Tf
+(EDUCATION) Tj T*
+/F1 10.5 Tf
+(M.Sc. Data Science, Christ University, 2019 - 2021) Tj T*
+/F1 10.5 Tf
+(B.Sc. Statistics, St. Xavier's College, 2016 - 2019) Tj T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000212 00000 n 
+0000000314 00000 n 
+0000002507 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+2643
+%%EOF

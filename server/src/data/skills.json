@@ -1,0 +1,71 @@
+{
+  "_format": "Each entry is 'Canonical Name|alias|alias'. Matching is case-insensitive and whole-word.",
+  "Programming Languages": [
+    "JavaScript|js|ecmascript|es6", "TypeScript|ts", "Python|python3", "Java|core java", "C|c language|ansi c",
+    "C++|cpp|c plus plus", "C#|csharp|c sharp", "Go|golang", "Rust", "Kotlin", "Swift", "PHP", "Ruby",
+    "Scala", "R|r programming", "MATLAB", "Dart", "Perl", "Bash|shell scripting|shell", "PowerShell",
+    "SQL|structured query language", "PL/SQL|plsql", "Solidity", "Objective-C", "Haskell", "Elixir", "Lua", "Julia"
+  ],
+  "Frontend": [
+    "HTML|html5", "CSS|css3", "React|react.js|reactjs", "Angular|angularjs|angular.js", "Vue.js|vue|vuejs",
+    "Next.js|nextjs", "Nuxt.js|nuxt", "Svelte", "Redux|redux toolkit", "Tailwind CSS|tailwind|tailwindcss",
+    "Bootstrap", "Sass|scss", "jQuery", "Webpack", "Vite", "Material UI|mui", "Responsive Design|responsive web design",
+    "Figma", "Three.js|threejs", "D3.js|d3", "Chart.js|chartjs", "Web Accessibility|accessibility|a11y|wcag"
+  ],
+  "Backend": [
+    "Node.js|node|nodejs", "Express.js|express|expressjs", "Django", "Flask", "FastAPI", "Spring Boot|spring|springboot",
+    "ASP.NET|.net|dotnet|asp.net core", "Laravel", "Ruby on Rails|rails", "NestJS|nest.js", "GraphQL",
+    "REST API|rest|restful|rest apis|restful apis", "gRPC", "Microservices|microservice", "WebSockets|websocket|socket.io",
+    "JWT|json web token", "OAuth|oauth2", "Hibernate", "Servlets|jsp"
+  ],
+  "Databases": [
+    "MongoDB|mongo", "MySQL", "PostgreSQL|postgres", "SQLite", "Oracle|oracle db", "SQL Server|mssql|microsoft sql server",
+    "Redis", "Cassandra", "DynamoDB", "Firebase|firestore", "Elasticsearch|elastic search", "Mongoose", "Prisma",
+    "Neo4j", "Supabase"
+  ],
+  "Cloud & DevOps": [
+    "AWS|amazon web services", "Azure|microsoft azure", "Google Cloud|gcp|google cloud platform", "Docker",
+    "Kubernetes|k8s", "Terraform", "Ansible", "Jenkins", "GitHub Actions", "GitLab CI", "CI/CD|ci cd|continuous integration",
+    "Linux|ubuntu|unix", "Nginx", "Apache", "Heroku", "Vercel", "Netlify", "Serverless|aws lambda|lambda",
+    "Prometheus", "Grafana", "Helm"
+  ],
+  "Data & AI": [
+    "Machine Learning|ml", "Deep Learning|dl", "Artificial Intelligence|ai", "Natural Language Processing|nlp",
+    "Computer Vision|opencv", "TensorFlow", "PyTorch", "Keras", "scikit-learn|sklearn|scikit learn", "Pandas", "NumPy",
+    "Matplotlib", "Seaborn", "Data Analysis|data analytics", "Data Visualization|data visualisation",
+    "Statistics|statistical analysis", "Power BI|powerbi", "Tableau", "Excel|ms excel|microsoft excel|advanced excel",
+    "Big Data", "Apache Spark|spark|pyspark", "Hadoop", "ETL", "Data Engineering", "LLM|large language models|llms",
+    "Generative AI|genai|gen ai", "Prompt Engineering", "LangChain", "Hugging Face|huggingface|transformers",
+    "Ollama", "RAG|retrieval augmented generation", "Jupyter|jupyter notebook", "Airflow|apache airflow", "Snowflake"
+  ],
+  "Mobile": [
+    "Android", "iOS", "React Native", "Flutter", "Xamarin", "Jetpack Compose", "SwiftUI"
+  ],
+  "Testing & Quality": [
+    "Unit Testing|unit tests", "Jest", "Mocha", "Cypress", "Selenium", "JUnit", "PyTest", "Playwright",
+    "Test Automation|automation testing", "Manual Testing", "Postman", "TDD|test driven development"
+  ],
+  "Tools & Practices": [
+    "Git", "GitHub", "GitLab", "Bitbucket", "Jira", "Agile", "Scrum", "Kanban", "OOP|object oriented programming|object-oriented",
+    "Data Structures|dsa|data structures and algorithms", "Algorithms", "System Design", "Design Patterns",
+    "Version Control", "API Design", "Debugging", "Code Review", "UML", "SDLC"
+  ],
+  "Security & Networking": [
+    "Cyber Security|cybersecurity|information security", "Network Security", "Penetration Testing|pentesting",
+    "OWASP", "Networking|computer networks|tcp/ip", "Cryptography", "Ethical Hacking", "Wireshark", "SIEM"
+  ],
+  "Design": [
+    "UI Design|ui", "UX Design|ux|user experience", "UI/UX|ui ux", "Adobe Photoshop|photoshop", "Adobe Illustrator|illustrator",
+    "Adobe XD", "Wireframing", "Prototyping", "User Research|usability testing", "Design Systems|design system", "Canva"
+  ],
+  "Business & Product": [
+    "Project Management", "Product Management", "Digital Marketing", "SEO|search engine optimization", "Content Writing",
+    "Salesforce", "SAP", "CRM", "Business Analysis", "Requirements Gathering", "Stakeholder Management",
+    "Financial Analysis", "Accounting", "Market Research"
+  ],
+  "Soft Skills": [
+    "Communication|communication skills", "Teamwork|team player|collaboration", "Leadership", "Problem Solving|problem-solving",
+    "Critical Thinking", "Time Management", "Adaptability", "Mentoring", "Presentation|presentation skills",
+    "Analytical Skills|analytical thinking", "Attention to Detail"
+  ]
+}

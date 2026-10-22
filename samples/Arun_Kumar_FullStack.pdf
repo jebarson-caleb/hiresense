@@ -1,0 +1,123 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [6 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Length 2678 >>
+stream
+BT
+50 792 Td
+14 TL
+/F2 11.5 Tf
+(ARUN KUMAR) Tj T*
+/F1 10.5 Tf
+(Full Stack Developer | Chennai, India) Tj T*
+/F1 10.5 Tf
+(arun.kumar@example.com | +91 98765 43210 | linkedin.com/in/arunkumar-dev | github.com/arunk) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F2 11.5 Tf
+(PROFESSIONAL SUMMARY) Tj T*
+/F1 10.5 Tf
+(Full stack developer with 2+ years of experience building responsive web applications with the) Tj T*
+/F1 10.5 Tf
+(  MERN stack.) Tj T*
+/F1 10.5 Tf
+(Comfortable owning features end to end, from MongoDB schema design to React UI and CI/CD) Tj T*
+/F1 10.5 Tf
+(  deployment.) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F2 11.5 Tf
+(TECHNICAL SKILLS) Tj T*
+/F1 10.5 Tf
+(Languages: JavaScript, TypeScript, HTML5, CSS3, SQL) Tj T*
+/F1 10.5 Tf
+(Frontend: React.js, Redux Toolkit, Next.js, Tailwind CSS, Bootstrap) Tj T*
+/F1 10.5 Tf
+(Backend: Node.js, Express.js, REST APIs, JWT authentication, Socket.io) Tj T*
+/F1 10.5 Tf
+(Databases: MongoDB, Mongoose, MySQL, Redis) Tj T*
+/F1 10.5 Tf
+(Tools: Git, GitHub Actions, Docker, Postman, Jest, Jira) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F2 11.5 Tf
+(WORK EXPERIENCE) Tj T*
+/F1 10.5 Tf
+(Software Developer - BrightLeaf Technologies, Chennai | Jul 2023 - Present) Tj T*
+/F1 10.5 Tf
+(- Developed a multi-tenant HR portal in React and Node.js used by 40+ client companies and 12k) Tj T*
+/F1 10.5 Tf
+(  employees.) Tj T*
+/F1 10.5 Tf
+(- Designed REST APIs with Express and MongoDB, reducing average response time by 35% through) Tj T*
+/F1 10.5 Tf
+(  indexing and caching with Redis.) Tj T*
+/F1 10.5 Tf
+(- Implemented JWT based role access control and automated deployments with Docker and GitHub) Tj T*
+/F1 10.5 Tf
+(  Actions.) Tj T*
+/F1 10.5 Tf
+(- Mentored 2 interns and led code reviews for the frontend team.) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F1 10.5 Tf
+(Web Developer Intern - PixelCraft Studio | Jan 2023 - Jun 2023) Tj T*
+/F1 10.5 Tf
+(- Built 6 responsive landing pages with React and Tailwind CSS, improving Lighthouse) Tj T*
+/F1 10.5 Tf
+(  performance score to 95.) Tj T*
+/F1 10.5 Tf
+(- Wrote unit tests with Jest, increasing coverage from 40% to 78%.) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F2 11.5 Tf
+(PROJECTS) Tj T*
+/F1 10.5 Tf
+(Real-time Chat App - React, Node.js, Socket.io, MongoDB: group chat with typing indicators and) Tj T*
+/F1 10.5 Tf
+(  200 concurrent users.) Tj T*
+/F1 10.5 Tf
+(E-commerce Store - Next.js, Stripe, MongoDB: product catalogue, cart and payment integration.) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F2 11.5 Tf
+(EDUCATION) Tj T*
+/F1 10.5 Tf
+(B.E. Computer Science and Engineering, Anna University, 2019 - 2023, CGPA 8.4) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F2 11.5 Tf
+(CERTIFICATIONS) Tj T*
+/F1 10.5 Tf
+(Meta Front-End Developer Certificate, MongoDB Associate Developer) Tj T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000212 00000 n 
+0000000314 00000 n 
+0000003044 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+3180
+%%EOF

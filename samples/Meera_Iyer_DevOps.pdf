@@ -1,0 +1,99 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [6 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Length 1814 >>
+stream
+BT
+50 792 Td
+14 TL
+/F2 11.5 Tf
+(MEERA IYER) Tj T*
+/F1 10.5 Tf
+(Senior DevOps Engineer | Hyderabad) Tj T*
+/F1 10.5 Tf
+(meera.iyer@example.com | +91 90000 11223 | linkedin.com/in/meeraiyer) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F2 11.5 Tf
+(PROFILE) Tj T*
+/F1 10.5 Tf
+(DevOps engineer with 5 years of experience automating cloud infrastructure on AWS and Azure.) Tj T*
+/F1 10.5 Tf
+(  Passionate about) Tj T*
+/F1 10.5 Tf
+(reliable CI/CD, observability and developer productivity.) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F2 11.5 Tf
+(CORE SKILLS) Tj T*
+/F1 10.5 Tf
+(AWS, Azure, Docker, Kubernetes, Helm, Terraform, Ansible, Jenkins, GitHub Actions, CI/CD,) Tj T*
+/F1 10.5 Tf
+(  Linux, Bash, Python,) Tj T*
+/F1 10.5 Tf
+(Prometheus, Grafana, Nginx, PostgreSQL) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F2 11.5 Tf
+(EXPERIENCE) Tj T*
+/F1 10.5 Tf
+(Senior DevOps Engineer - CloudNine Systems | Mar 2022 - Present) Tj T*
+/F1 10.5 Tf
+(- Migrated 30 microservices to Kubernetes \(EKS\) with Helm, cutting infrastructure cost by 28%.) Tj T*
+/F1 10.5 Tf
+(- Built Terraform modules used by 8 product teams to provision environments in under 15) Tj T*
+/F1 10.5 Tf
+(  minutes.) Tj T*
+/F1 10.5 Tf
+(- Introduced Prometheus and Grafana monitoring, reducing mean time to recovery by 45%.) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F1 10.5 Tf
+(DevOps Engineer - Infosys | Jun 2019 - Feb 2022) Tj T*
+/F1 10.5 Tf
+(- Automated build and release pipelines with Jenkins for 20 applications.) Tj T*
+/F1 10.5 Tf
+(- Managed Linux servers and Ansible playbooks for configuration management.) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F2 11.5 Tf
+(EDUCATION) Tj T*
+/F1 10.5 Tf
+(B.Tech Information Technology, JNTU Hyderabad, 2015 - 2019) Tj T*
+/F1 10.5 Tf
+() Tj T*
+/F2 11.5 Tf
+(CERTIFICATIONS) Tj T*
+/F1 10.5 Tf
+(AWS Certified Solutions Architect - Associate, Certified Kubernetes Administrator \(CKA\)) Tj T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000212 00000 n 
+0000000314 00000 n 
+0000002180 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+2316
+%%EOF

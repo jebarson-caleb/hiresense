@@ -1,0 +1,26 @@
+services:
+  mongo:
+    image: mongo:7
+    container_name: resume-portal-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  # Optional: run Ollama in Docker instead of installing it natively.
+  # Start with: docker compose --profile ollama up -d
+  # then pull the model: docker exec -it resume-portal-ollama ollama pull llama3.2:3b
+  ollama:
+    image: ollama/ollama:latest
+    container_name: resume-portal-ollama
+    profiles: ["ollama"]
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+
+volumes:
+  mongo-data:
+  ollama-data:
