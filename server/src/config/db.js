@@ -10,3 +10,15 @@ export async function connectDB() {
 export async function disconnectDB() {
   await mongoose.disconnect();
 }
+
+let connecting;
+
+/** Connect once and reuse across serverless invocations; a failed attempt is retried next call. */
+export async function ensureDB() {
+  if (mongoose.connection.readyState === 1) return;
+  connecting ??= connectDB().catch((err) => {
+    connecting = undefined;
+    throw err;
+  });
+  await connecting;
+}

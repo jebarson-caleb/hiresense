@@ -1,11 +1,9 @@
-import fs from 'node:fs';
 import path from 'node:path';
-import crypto from 'node:crypto';
 import multer from 'multer';
 import HttpError from '../utils/httpError.js';
 
+// Older local uploads were written here; new uploads are stored in MongoDB so the API also runs serverless.
 export const UPLOAD_DIR = path.resolve('uploads');
-fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 
 const ALLOWED = {
   '.pdf': 'application/pdf',
@@ -13,13 +11,7 @@ const ALLOWED = {
   '.txt': 'text/plain',
 };
 
-const storage = multer.diskStorage({
-  destination: UPLOAD_DIR,
-  filename: (_req, file, cb) => {
-    const ext = path.extname(file.originalname).toLowerCase();
-    cb(null, `${Date.now()}-${crypto.randomBytes(6).toString('hex')}${ext}`);
-  },
-});
+const storage = multer.memoryStorage();
 
 export const uploadResume = multer({
   storage,

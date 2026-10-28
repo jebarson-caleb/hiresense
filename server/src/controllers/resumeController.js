@@ -1,4 +1,6 @@
 import fs from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
 import Resume from '../models/Resume.js';
 import Application from '../models/Application.js';
 import { extractText } from '../services/textExtractor.js';
@@ -15,13 +17,7 @@ async function findOwnResume(req, withText = false) {
 export async function uploadResume(req, res) {
   if (!req.file) throw new HttpError(400, 'Please attach a resume file (field name "resume")');
 
-  let rawText;
-  try {
-    rawText = await extractText(req.file.path, req.file.originalname);
-  } catch (err) {
-    await fs.unlink(req.file.path).catch(() => {});
-    throw err;
-  }
+  const rawText = await extractText(req.file.buffer, req.file.originalname);
 
   const { analysis, analyzedBy, model, error } = await analyzeResume(rawText);
 
@@ -30,8 +26,9 @@ export async function uploadResume(req, res) {
   const resume = await Resume.create({
     user: req.user._id,
     fileName: req.file.originalname,
-    filePath: req.file.filename,
+    filePath: `${Date.now()}-${crypto.randomBytes(6).toString('hex')}${path.extname(req.file.originalname).toLowerCase()}`,
     mimeType: req.file.mimetype,
+    fileData: req.file.buffer,
     rawText,
     analysis,
     analyzedBy,
@@ -41,6 +38,7 @@ export async function uploadResume(req, res) {
 
   const out = resume.toObject();
   delete out.rawText;
+  delete out.fileData;
   res.status(201).json({ resume: out, aiError: error || null });
 }
 

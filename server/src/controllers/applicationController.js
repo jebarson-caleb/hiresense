@@ -105,6 +105,13 @@ export async function rescore(req, res) {
 
 export async function downloadResume(req, res) {
   const { app } = await loadForViewer(req);
+  const stored = app.resume && (await Resume.findById(app.resume._id).select('+fileData'));
+  if (stored?.fileData?.length) {
+    res.attachment(stored.fileName);
+    res.type(stored.mimeType || 'application/octet-stream');
+    return res.send(stored.fileData);
+  }
+  // Uploads made before files were stored in MongoDB live on local disk.
   const file = app.resume?.filePath && path.join(UPLOAD_DIR, path.basename(app.resume.filePath));
   if (!file || !fs.existsSync(file)) throw new HttpError(404, 'Original resume file is not available');
   res.download(file, app.resume.fileName);

@@ -21,6 +21,8 @@ const resumeSchema = new mongoose.Schema(
     fileName: { type: String, required: true },
     filePath: { type: String, default: '' },
     mimeType: { type: String, default: '' },
+    // Original upload, kept for recruiter downloads. Max 5 MB (see upload middleware).
+    fileData: { type: Buffer, select: false },
     rawText: { type: String, default: '', select: false },
     analysis: { type: analysisSchema, default: () => ({}) },
     analyzedBy: { type: String, enum: ['groq', 'ollama', 'fallback'], default: 'fallback' },

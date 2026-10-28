@@ -1,4 +1,3 @@
-import fs from 'node:fs/promises';
 import path from 'node:path';
 import mammoth from 'mammoth';
 import { getDocument } from 'pdfjs-dist/legacy/build/pdf.mjs';
@@ -35,9 +34,8 @@ function clean(text) {
     .trim();
 }
 
-export async function extractText(filePath, originalName = filePath) {
+export async function extractText(buffer, originalName) {
   const ext = path.extname(originalName).toLowerCase();
-  const buffer = await fs.readFile(filePath);
   let text = '';
 
   try {
