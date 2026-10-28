@@ -17,7 +17,7 @@ export default function AuthArt({ title, eyebrow }) {
         </div>
       </div>
       <div className="row-between">
-        <span className="label">Local LLM · Ollama</span>
+        <span className="label">LLM · Groq / Ollama</span>
         <span className="label">React · Express · MongoDB</span>
       </div>
     </aside>

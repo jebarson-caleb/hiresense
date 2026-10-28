@@ -61,7 +61,7 @@ export default function MyApplications() {
                     </td>
                     <td className="small">{formatDate(a.createdAt)}</td>
                     <td className="num" style={{ fontWeight: 700, color: scoreColor(a.matchScore) }}>{a.matchScore}%</td>
-                    <td className="small"><span className="mono" style={{ fontSize: '0.72rem' }}>{a.matchBreakdown?.scoredBy === 'ollama' ? 'AI' : 'Rules'}</span></td>
+                    <td className="small"><span className="mono" style={{ fontSize: '0.72rem' }}>{(a.matchBreakdown?.scoredBy || 'fallback') !== 'fallback' ? 'AI' : 'Rules'}</span></td>
                     <td><StatusBadge status={a.status} /></td>
                     <td>
                       <div className="row" style={{ gap: 6, flexWrap: 'nowrap' }}>

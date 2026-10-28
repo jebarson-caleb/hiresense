@@ -23,7 +23,7 @@ const resumeSchema = new mongoose.Schema(
     mimeType: { type: String, default: '' },
     rawText: { type: String, default: '', select: false },
     analysis: { type: analysisSchema, default: () => ({}) },
-    analyzedBy: { type: String, enum: ['ollama', 'fallback'], default: 'fallback' },
+    analyzedBy: { type: String, enum: ['groq', 'ollama', 'fallback'], default: 'fallback' },
     model: { type: String, default: '' },
     isPrimary: { type: Boolean, default: true },
   },

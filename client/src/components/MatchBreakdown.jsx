@@ -4,7 +4,7 @@ import { scoreLabel } from '../utils/format';
 /** Shows how a match score was built: skill overlap, text similarity and the LLM's opinion. */
 export default function MatchBreakdown({ score, breakdown }) {
   const b = breakdown || {};
-  const ai = b.scoredBy === 'ollama';
+  const ai = !!b.scoredBy && b.scoredBy !== 'fallback';
   return (
     <div className="stack" style={{ gap: 18 }}>
       <div className="row" style={{ gap: 18, flexWrap: 'nowrap', alignItems: 'center' }}>
@@ -15,7 +15,7 @@ export default function MatchBreakdown({ score, breakdown }) {
           </span>
           <ScoreBar label="Skill match" value={b.skillScore} />
           <ScoreBar label="Text similarity" value={b.textScore} />
-          <ScoreBar label="AI fit" value={b.aiScore} hint="Ollama offline" />
+          <ScoreBar label="AI fit" value={b.aiScore} hint="AI offline" />
         </div>
       </div>
       {b.aiReasoning && (

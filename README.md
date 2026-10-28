@@ -6,14 +6,14 @@ A MERN-stack web application where:
 - **Recruiters** post jobs and see applicants ranked by AI match score. They can also discover suitable candidates who have not applied yet.
 - **Admins** monitor platform statistics and manage users and job posts.
 
-The AI runs **locally through [Ollama](https://ollama.com)**, so no paid API is needed and resume data never leaves the machine. If Ollama is not running, a rule-based engine (a skills dictionary plus TF-IDF) takes over, so the app always works.
+The AI runs on **[Groq](https://console.groq.com)** (OpenAI gpt-oss-120b, free tier) by default, or **locally through [Ollama](https://ollama.com)** if you want resume data to stay on the machine. If the AI is unavailable, a rule-based engine (a skills dictionary plus TF-IDF) takes over, so the app always works.
 
 | Layer    | Technology |
 |----------|------------|
 | Frontend | React 18, Vite, React Router, Axios, Chart.js, plain CSS (light/dark) |
 | Backend  | Node.js, Express 5, Mongoose, JWT, Multer, pdfjs-dist, mammoth |
 | Database | MongoDB 7 (Docker) |
-| AI       | Ollama (`llama3.2:3b` by default), plus a rule-based fallback |
+| AI       | Groq (`openai/gpt-oss-120b`) or Ollama (`llama3.2:3b`), plus a rule-based fallback |
 
 ---
 
@@ -21,7 +21,7 @@ The AI runs **locally through [Ollama](https://ollama.com)**, so no paid API is 
 
 - **Node.js 20+**
 - **Docker Desktop** (for MongoDB), or a local MongoDB / Atlas URI
-- **Ollama** (optional, but needed for real AI analysis): https://ollama.com/download
+- **A Groq API key** (free, https://console.groq.com/keys), or **Ollama** for fully local AI: https://ollama.com/download
 
 ## 2. Setup
 
@@ -35,7 +35,20 @@ npm run seed                   # demo users, 20 jobs, 5 resumes, 13 applications
 npm run samples                # writes sample resume PDFs to ./samples (for upload testing)
 ```
 
-### Local LLM (Ollama)
+### AI provider
+
+**Groq (default).** Put your key in `server/.env`:
+
+```env
+LLM_PROVIDER=groq
+GROQ_API_KEY=gsk_...
+GROQ_MODEL=openai/gpt-oss-120b
+GROQ_REASONING_EFFORT=medium   # low | medium | high
+```
+
+The free tier allows about 30 requests a minute; the client waits and retries once when it is rate-limited.
+
+**Local LLM (Ollama).** Set `LLM_PROVIDER=ollama`, then:
 
 ```bash
 ollama pull llama3.2:3b        # ~2 GB; runs on most laptops
@@ -85,11 +98,11 @@ Upload (PDF/DOCX/TXT)
    │  Multer → pdfjs-dist / mammoth → plain text
    ▼
 Resume analysis (services/resumeAnalyzer.js)
-   ├─ Ollama /api/chat, format:"json", temperature 0.2
+   ├─ Groq chat completions (JSON mode) or Ollama /api/chat, format:"json", temperature 0.2
    │    → summary, skills, experienceYears, education, strengths,
    │      weaknesses, suggestions, suggestedRoles, atsScore
    ├─ validate + normalise (skill aliases, clamp numbers, repair JSON)
-   ├─ blend with rule-based signals (skills union, ATS = 50% LLM + 50% heuristic)
+   ├─ blend with rule-based signals (skills union, ATS = 70% LLM + 30% heuristic on Groq, 50/50 on Ollama)
    └─ on timeout / bad output → rule-based analysis (services/fallback.js)
    ▼
 Job matching (services/matcher.js)
@@ -118,7 +131,7 @@ webtech/
 │     ├─ config/             env + MongoDB connection
 │     ├─ models/             User, Resume, Job, Application
 │     ├─ middleware/         JWT auth + role guard, upload, errors/validation
-│     ├─ services/           ollamaClient, resumeAnalyzer, matcher, fallback, skills, textExtractor
+│     ├─ services/           llmClient, resumeAnalyzer, matcher, fallback, skills, textExtractor
 │     ├─ data/skills.json    ~220 skills with aliases, grouped by category
 │     ├─ controllers/        auth, resume, job, application, admin
 │     ├─ routes/index.js     all REST routes
@@ -142,7 +155,7 @@ All routes are prefixed with `/api`. 🔒 means a JWT is required, and the role 
 | POST | `/auth/register` | Register as seeker or recruiter |
 | POST | `/auth/login` | Log in → `{ token, user }` |
 | GET | `/auth/me` 🔒 | Current user |
-| GET | `/ai/health` | Ollama status (`?force=1` skips the cache) |
+| GET | `/ai/health` | AI provider status (`?force=1` skips the cache) |
 | POST | `/resumes` 🔒[seeker] | Upload (`multipart/form-data`, field `resume`) + analyse |
 | GET | `/resumes` · `/resumes/:id` 🔒[seeker] | List / get own resumes |
 | POST | `/resumes/:id/reanalyze` 🔒[seeker] | Run the analysis again (e.g. after starting Ollama) |
@@ -169,7 +182,7 @@ All routes are prefixed with `/api`. 🔒 means a JWT is required, and the role 
 ## 7. Troubleshooting
 
 - **"Could not connect to MongoDB"**: run `npm run db`, and check that Docker Desktop is running.
-- **Badge says "AI fallback"**: Ollama is not reachable. Start it with `ollama serve`, then click *Re-analyse* on a resume.
-- **Badge says "Model missing"**: run `ollama pull llama3.2:3b`, or the model named in `OLLAMA_MODEL`.
+- **Badge says "AI fallback"**: the AI is not reachable. With Groq, check `GROQ_API_KEY` in `server/.env` and restart the server; with Ollama, start it with `ollama serve`. Then click *Re-analyse* on a resume.
+- **Badge says "Model missing"**: with Groq, set `GROQ_MODEL` to a model listed at `/api/ai/health`; with Ollama, run `ollama pull` for the model in `OLLAMA_MODEL`.
 - **Analysis is slow**: the first request loads the model into memory. Later calls are faster, or you can use a smaller model.
 - **"No readable text found"**: the PDF is a scanned image. Upload a text-based PDF or DOCX.

@@ -3,7 +3,7 @@ import { body } from 'express-validator';
 import { protect, requireRole } from '../middleware/auth.js';
 import { uploadResume } from '../middleware/upload.js';
 import { validate } from '../middleware/error.js';
-import { getHealth } from '../services/ollamaClient.js';
+import { getHealth } from '../services/llmClient.js';
 import * as auth from '../controllers/authController.js';
 import * as resumes from '../controllers/resumeController.js';
 import * as jobs from '../controllers/jobController.js';

@@ -103,7 +103,7 @@ export default function Applicants() {
                     </div>
                     <div className="small muted mt" style={{ marginTop: 8 }}>
                       {a.resume?.analysis?.experienceYears ?? 0} yrs exp · ATS {a.resume?.analysis?.atsScore ?? '-'} · applied {formatDate(a.createdAt)} ·{' '}
-                      {a.matchBreakdown?.scoredBy === 'ollama' ? 'AI-scored' : 'rule-scored'}
+                      {(a.matchBreakdown?.scoredBy || 'fallback') !== 'fallback' ? 'AI-scored' : 'rule-scored'}
                     </div>
                     <div className="stack mt" style={{ gap: 6, marginTop: 10 }}>
                       <SkillChips skills={a.matchBreakdown?.matchedSkills || []} variant="match" empty="No required skills matched" />

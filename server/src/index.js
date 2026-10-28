@@ -1,7 +1,7 @@
 import env from './config/env.js';
 import app from './app.js';
 import { connectDB } from './config/db.js';
-import { getHealth } from './services/ollamaClient.js';
+import { getHealth } from './services/llmClient.js';
 
 try {
   await connectDB();

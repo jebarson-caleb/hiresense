@@ -126,10 +126,10 @@ export function List({ items = [], kind = 'good' }) {
 }
 
 export function AnalyzedByBadge({ by, model }) {
-  return by === 'ollama' ? (
-    <span className="badge badge-primary" title={`Analysed by local LLM ${model || ''}`}>AI · {model || 'Ollama'}</span>
+  return by && by !== 'fallback' ? (
+    <span className="badge badge-primary" title={`Analysed by ${by === 'groq' ? 'Groq' : 'local LLM'} ${model || ''}`}>AI · {model || by}</span>
   ) : (
-    <span className="badge" title="Analysed with the rule-based engine (Ollama was offline)">Rule-based</span>
+    <span className="badge" title="Analysed with the rule-based engine (the AI was offline)">Rule-based</span>
   );
 }
 

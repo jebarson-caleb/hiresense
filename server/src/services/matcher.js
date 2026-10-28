@@ -1,6 +1,6 @@
 // Resume <-> job matching. Fast score = skill overlap + TF-IDF text similarity;
-// AI score = local LLM judgement, blended in when Ollama is available.
-import { chatJSON, isReady } from './ollamaClient.js';
+// AI score = LLM judgement (Groq or Ollama), blended in when the provider is available.
+import { chatJSON, isReady, provider } from './llmClient.js';
 import { buildIdf, tokenize, cosine } from './fallback.js';
 import { extractSkills, normalizeSkillList, skillKey } from './skills.js';
 
@@ -48,27 +48,33 @@ export function fastMatch(resume, job, corpus, jobIndex) {
   };
 }
 
-const FIT_SYSTEM = `You are a strict technical recruiter. Compare a candidate to a job and reply with ONLY JSON:
-{"score": number 0-100 (how well the candidate fits the job), "reasoning": "2-3 sentences explaining the score", "missingSkills": ["important requirements the candidate lacks"]}
-Score guide: 85+ excellent fit, 65-84 good, 40-64 partial, below 40 poor. Judge only on the information given.`;
+const FIT_SYSTEM = `You are a strict, fair technical recruiter screening a candidate for a specific job.
+Reply with ONLY a JSON object:
+{"score": number 0-100, "reasoning": "2-3 sentences naming the decisive matches and gaps", "missingSkills": ["required skills or qualifications the candidate clearly lacks"]}
+How to score:
+- Weigh required skills most (about 50%), then relevant experience depth and seniority vs the minimum (about 30%), then domain/role alignment and education (about 20%).
+- Count a skill as present if the candidate shows it or a close equivalent (e.g. PostgreSQL for "SQL", Next.js for "React").
+- Being under the minimum experience should lower the score noticeably; far exceeding it should not raise it much.
+- Bands: 85+ excellent, 65-84 good, 40-64 partial, below 40 poor.
+- Judge only on the information given; never assume unstated skills. missingSkills must not list anything the candidate has.`;
 
-/** Ask the local LLM how well the resume fits the job. Throws if unavailable. */
+/** Ask the LLM how well the resume fits the job. Throws if unavailable. */
 export async function aiFit(resume, job) {
   const a = resume.analysis || {};
   const prompt = `JOB
 Title: ${job.title} at ${job.company}
 Required skills: ${(job.requiredSkills || []).join(', ') || 'not specified'}
 Minimum experience: ${job.minExperience || 0} years
-Description: ${String(job.description).slice(0, 1500)}
+Description: ${String(job.description).slice(0, provider === 'groq' ? 4000 : 1500)}
 
 CANDIDATE
 Summary: ${a.summary || 'n/a'}
 Skills: ${(a.skills || []).join(', ') || 'n/a'}
 Experience: ${a.experienceYears ?? 0} years
 Education: ${(a.education || []).join('; ') || 'n/a'}
-Resume excerpt: ${String(resume.rawText || '').slice(0, 2500)}`;
+Resume excerpt: ${String(resume.rawText || '').slice(0, provider === 'groq' ? 8000 : 2500)}`;
 
-  const out = await chatJSON({ system: FIT_SYSTEM, prompt, maxTokens: 400, timeoutMs: 60000 });
+  const out = await chatJSON({ system: FIT_SYSTEM, prompt, temperature: 0.1, maxTokens: 400, timeoutMs: provider === 'groq' ? 20000 : 60000 });
   const score = Number(out.score);
   if (!Number.isFinite(score)) throw new Error('AI fit response missing score');
   return {
@@ -81,7 +87,7 @@ Resume excerpt: ${String(resume.rawText || '').slice(0, 2500)}`;
 // In-memory cache so repeated "AI fit" checks for the same resume/job version are instant.
 const fitCache = new Map();
 
-/** Full match: fast score, upgraded with the LLM's opinion when Ollama is ready. */
+/** Full match: fast score, upgraded with the LLM's opinion when the provider is ready. */
 export async function fullMatch(resume, job, { useAI = true } = {}) {
   const base = fastMatch(resume, job);
   if (!useAI || !(await isReady())) return base;
@@ -97,11 +103,12 @@ export async function fullMatch(resume, job, { useAI = true } = {}) {
     const missing = normalizeSkillList([...base.missingSkills, ...fit.missingSkills], 10);
     return {
       ...base,
-      score: Math.round(0.6 * base.skillScore + 0.4 * fit.score),
+      // A large hosted model's holistic judgement is reliable enough to weigh equally with skill overlap.
+      score: Math.round(provider === 'groq' ? 0.5 * base.skillScore + 0.5 * fit.score : 0.6 * base.skillScore + 0.4 * fit.score),
       aiScore: fit.score,
       aiReasoning: fit.reasoning,
       missingSkills: missing,
-      scoredBy: 'ollama',
+      scoredBy: provider,
     };
   } catch (err) {
     console.warn(`[ai] fit scoring failed, using fast score: ${err.message}`);

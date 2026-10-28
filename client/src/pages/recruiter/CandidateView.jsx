@@ -43,7 +43,7 @@ export default function CandidateView() {
     run('rescore', async () => {
       const { data } = await api.post(`/applications/${id}/rescore`);
       setApp((a) => ({ ...a, matchScore: data.application.matchScore, matchBreakdown: data.application.matchBreakdown }));
-      toast(data.application.matchBreakdown.scoredBy === 'ollama' ? 'Re-scored with AI' : 'AI offline - re-scored with rules', 'success');
+      toast(data.application.matchBreakdown.scoredBy !== 'fallback' ? 'Re-scored with AI' : 'AI offline - re-scored with rules', 'success');
     });
 
   const download = () =>

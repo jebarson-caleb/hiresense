@@ -10,7 +10,7 @@ const breakdownSchema = new mongoose.Schema(
     matchedSkills: { type: [String], default: [] },
     missingSkills: { type: [String], default: [] },
     aiReasoning: { type: String, default: '' },
-    scoredBy: { type: String, enum: ['ollama', 'fallback'], default: 'fallback' },
+    scoredBy: { type: String, enum: ['groq', 'ollama', 'fallback'], default: 'fallback' },
   },
   { _id: false }
 );

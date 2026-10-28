@@ -33,13 +33,13 @@ export default function AdminDashboard() {
         <StatTile index="01" color="var(--chart-1)" label="Users" value={sum(s.users)} sub={`${s.users.seeker || 0} seekers · ${s.users.recruiter || 0} recruiters · ${s.users.admin || 0} admins`} />
         <StatTile index="02" color="var(--chart-3)" label="Jobs" value={sum(s.jobs)} sub={`${s.jobs.open || 0} open · ${s.jobs.closed || 0} closed`} />
         <StatTile index="03" color="var(--brand)" label="Applications" value={sum(s.applications)} sub={`avg match ${s.avgMatchScore}%`} />
-        <StatTile index="04" color="var(--ink)" label="Resumes analysed" value={sum(s.resumes)} sub={`${s.resumes.ollama || 0} by AI · ${s.resumes.fallback || 0} by rules · avg ATS ${s.avgAtsScore}`} />
+        <StatTile index="04" color="var(--ink)" label="Resumes analysed" value={sum(s.resumes)} sub={`${(s.resumes.groq || 0) + (s.resumes.ollama || 0)} by AI · ${s.resumes.fallback || 0} by rules · avg ATS ${s.avgAtsScore}`} />
       </div>
 
       <div className={`callout mb ${aiReady ? '' : 'callout-warn'}`}>
-        <strong>{aiReady ? 'Local LLM online' : 'Running on rule-based fallback'}: </strong>
+        <strong>{aiReady ? `AI online (${s.ai.provider === 'groq' ? 'Groq' : 'Ollama'})` : 'Running on rule-based fallback'}: </strong>
         {s.ai.message}
-        {s.ai.models?.length > 0 && <span className="muted"> · installed models: {s.ai.models.join(', ')}</span>}
+        {s.ai.models?.length > 0 && <span className="muted"> · available models: {s.ai.models.join(', ')}</span>}
       </div>
 
       <div className="grid grid-2 mb">

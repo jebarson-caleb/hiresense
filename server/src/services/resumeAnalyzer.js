@@ -1,25 +1,32 @@
-// Resume analysis: local LLM (Ollama) first, rule-based fallback if it is unavailable or misbehaves.
-import env from '../config/env.js';
-import { chatJSON, isReady } from './ollamaClient.js';
+// Resume analysis: LLM (Groq or local Ollama) first, rule-based fallback if it is unavailable or misbehaves.
+import { chatJSON, isReady, provider, activeModel } from './llmClient.js';
 import { analyzeWithRules } from './fallback.js';
 import { normalizeSkillList } from './skills.js';
 
-const MAX_CHARS = 6000;
+// Hosted models have a 128k context, so they get the whole resume; small local models get a trimmed copy.
+const MAX_CHARS = provider === 'groq' ? 20000 : 6000;
+// How much the model's ATS score counts against the rule-based one. A large hosted model is trusted more.
+const LLM_ATS_WEIGHT = provider === 'groq' ? 0.7 : 0.5;
 
-const SYSTEM_PROMPT = `You are an expert technical recruiter and ATS (applicant tracking system) reviewer.
-You analyse resumes and reply with ONLY a JSON object, no markdown, using exactly this shape:
+const SYSTEM_PROMPT = `You are a senior technical recruiter and ATS (applicant tracking system) reviewer with 15 years of hiring experience.
+Read the resume carefully and reply with ONLY a JSON object (no markdown, no commentary) in exactly this shape:
 {
-  "summary": "2-3 sentence professional summary of the candidate",
-  "skills": ["concrete skills, tools, languages and frameworks found in the resume"],
-  "experienceYears": number (total professional experience incl. internships, 0 for students),
-  "education": ["degree, institution, year"],
-  "strengths": ["3-5 specific strengths of this resume"],
-  "weaknesses": ["2-4 specific gaps or problems"],
-  "suggestions": ["3-6 actionable improvements to the resume"],
-  "suggestedRoles": ["2-3 job titles this candidate fits"],
-  "atsScore": number from 0 to 100 (how well the resume is written and structured for ATS)
+  "summary": "2-3 sentence third-person professional summary: current level, core stack, standout achievement",
+  "skills": ["every concrete skill, language, framework, tool, platform and methodology in the resume, canonical names e.g. JavaScript, React, PostgreSQL, AWS"],
+  "experienceYears": number,
+  "education": ["Degree, Institution, Year"],
+  "strengths": ["3-5 strengths, each citing specific evidence from the resume"],
+  "weaknesses": ["2-4 concrete gaps or problems in the resume as written"],
+  "suggestions": ["3-6 actionable, specific rewrites or additions, e.g. 'Quantify the API migration bullet with latency or cost numbers'"],
+  "suggestedRoles": ["2-3 realistic job titles at the right seniority"],
+  "atsScore": number
 }
-Only use facts present in the resume. Be specific and concise.`;
+Rules:
+- Use only facts present in the resume. Never invent employers, dates, degrees or skills.
+- experienceYears: total professional experience including internships, computed from the date ranges (overlapping roles counted once, "Present" = today). Round to one decimal. 0 for students with no work history.
+- skills: deduplicate, no soft skills like "teamwork", no sentence fragments.
+- strengths/weaknesses/suggestions must be specific to THIS resume, never generic advice like "add more detail".
+- atsScore (0-100) rubric: clear standard section headings (15), contact info present (10), skills section with relevant keywords (20), quantified achievements with numbers (20), consistent dates and reverse-chronological order (10), strong action verbs and concise bullets (15), education present (10).`;
 
 const str = (v, max = 400) => (typeof v === 'string' ? v.trim().slice(0, max) : '');
 const strList = (v, limit = 8, max = 220) =>
@@ -41,7 +48,7 @@ function normalize(llm, rules) {
 
   const llmAts = Number(llm.atsScore);
   // Blend so the score is stable between runs but still reflects the model's judgement.
-  const atsScore = Number.isFinite(llmAts) ? Math.round(0.5 * clamp(llmAts, 0, 100) + 0.5 * rules.atsScore) : rules.atsScore;
+  const atsScore = Number.isFinite(llmAts) ? Math.round(LLM_ATS_WEIGHT * clamp(llmAts, 0, 100) + (1 - LLM_ATS_WEIGHT) * rules.atsScore) : rules.atsScore;
 
   const pick = (key, limit) => {
     const list = strList(llm[key], limit);
@@ -62,7 +69,7 @@ function normalize(llm, rules) {
 }
 
 /**
- * @returns {Promise<{analysis: object, analyzedBy: 'ollama'|'fallback', model: string, error?: string}>}
+ * @returns {Promise<{analysis: object, analyzedBy: 'groq'|'ollama'|'fallback', model: string, error?: string}>}
  */
 export async function analyzeResume(text) {
   const rules = analyzeWithRules(text);
@@ -75,9 +82,9 @@ export async function analyzeResume(text) {
   let lastError;
   for (let attempt = 1; attempt <= 2; attempt++) {
     try {
-      const llm = await chatJSON({ system: SYSTEM_PROMPT, prompt, temperature: attempt === 1 ? 0.2 : 0 });
+      const llm = await chatJSON({ system: SYSTEM_PROMPT, prompt, temperature: attempt === 1 ? 0.2 : 0, maxTokens: 1800 });
       if (!llm || typeof llm !== 'object' || (!llm.summary && !llm.skills)) throw new Error('JSON missing expected fields');
-      return { analysis: normalize(llm, rules), analyzedBy: 'ollama', model: env.ollamaModel };
+      return { analysis: normalize(llm, rules), analyzedBy: provider, model: activeModel() };
     } catch (err) {
       lastError = err;
       console.warn(`[ai] resume analysis attempt ${attempt} failed: ${err.message}`);

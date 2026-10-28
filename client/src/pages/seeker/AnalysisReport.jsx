@@ -104,7 +104,7 @@ export default function AnalysisReport() {
           {issues.length ? (
             issues.map(({ issue, fix }, i) => (
               <div key={i} className="ai-panel">
-                <div className="ai-panel-head">HireSense AI<span className="mono">{resume.analyzedBy === 'ollama' ? resume.model : 'rules'}</span></div>
+                <div className="ai-panel-head">HireSense AI<span className="mono">{resume.analyzedBy !== 'fallback' ? resume.model : 'rules'}</span></div>
                 <div className="ai-panel-body">
                   <span className="issue-tag">Issue #{String(i + 1).padStart(2, '0')}</span>
                   <h3 style={{ margin: '4px 0 0', fontSize: '1.1rem' }}>{issue}</h3>

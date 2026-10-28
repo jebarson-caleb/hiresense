@@ -29,7 +29,7 @@ export default function SiteFooter() {
           <ul className="mt">
             <li>React · Vite</li>
             <li>Node.js · Express</li>
-            <li>MongoDB · Ollama</li>
+            <li>MongoDB · Groq / Ollama</li>
           </ul>
         </div>
         <div style={{ display: 'grid', placeItems: 'center' }}>

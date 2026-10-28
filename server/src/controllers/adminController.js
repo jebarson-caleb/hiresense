@@ -3,7 +3,7 @@ import Job from '../models/Job.js';
 import Resume from '../models/Resume.js';
 import Application from '../models/Application.js';
 import HttpError from '../utils/httpError.js';
-import { getHealth } from '../services/ollamaClient.js';
+import { getHealth } from '../services/llmClient.js';
 
 const toCounts = (rows) => Object.fromEntries(rows.map((r) => [r._id, r.count]));
 

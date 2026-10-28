@@ -128,7 +128,7 @@ export default function Landing() {
         <span className="plus" style={{ left: 14, bottom: 22 }}>+</span>
         <span className="plus" style={{ right: 14, bottom: 22 }}>+</span>
         <span className="coords" style={{ left: 18, top: 16 }}>ISO 24 · A4 · 210×297</span>
-        <span className="coords" style={{ right: 18, top: 16 }}>LOCAL LLM · OLLAMA</span>
+        <span className="coords" style={{ right: 18, top: 16 }}>LLM · GROQ / OLLAMA</span>
         <ExplodedResume />
         <div className="ruler-h" />
       </section>
@@ -142,7 +142,7 @@ export default function Landing() {
         <div className="stack" style={{ justifyContent: 'space-between' }}>
           <p style={{ margin: 0, color: 'var(--ink-2)' }}>
             HireSense reviews your resume, identifies issues, scores it like an applicant tracking system and matches it
-            to open jobs. Every analysis runs on a local language model through Ollama, so resumes never leave the server.
+            to open jobs. Analysis runs on gpt-oss-120b through Groq, or fully on your own server with Ollama.
           </p>
           <div className="row">
             <Link to="/register" className="btn btn-brand">
