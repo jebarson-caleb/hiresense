@@ -1,4 +1,7 @@
 {
+  "regions": [
+    "bom1"
+  ],
   "installCommand": "npm install && npm --prefix server install && npm --prefix client install",
   "buildCommand": "npm --prefix client run build",
   "outputDirectory": "client/dist",
@@ -9,7 +12,13 @@
     }
   },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api" },
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    {
+      "source": "/api/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
   ]
 }
