@@ -15,7 +15,8 @@ const storage = multer.memoryStorage();
 
 export const uploadResume = multer({
   storage,
-  limits: { fileSize: 5 * 1024 * 1024 },
+  // 4 MB keeps the multipart request under Vercel's 4.5 MB request body limit.
+  limits: { fileSize: 4 * 1024 * 1024 },
   fileFilter: (_req, file, cb) => {
     const ext = path.extname(file.originalname).toLowerCase();
     if (!ALLOWED[ext]) return cb(new HttpError(400, 'Only PDF, DOCX or TXT resumes are allowed'));

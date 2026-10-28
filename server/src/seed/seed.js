@@ -1,6 +1,6 @@
 // Resets the database with demo users, jobs, resumes and applications.
 // Usage: npm run seed            (rule-based analysis, fast)
-//        npm run seed -- --ai    (analyse seeded resumes with Ollama if it is running)
+//        npm run seed -- --ai    (analyse seeded resumes with the configured AI provider)
 import { connectDB, disconnectDB } from '../config/db.js';
 import User from '../models/User.js';
 import Job from '../models/Job.js';
@@ -74,7 +74,7 @@ for (const s of sampleResumes) {
   let analyzedBy = 'fallback';
   let model = '';
   if (useAI) {
-    process.stdout.write(`Analysing ${s.fileName} with Ollama... `);
+    process.stdout.write(`Analysing ${s.fileName} with AI... `);
     ({ analysis, analyzedBy, model } = await analyzeResume(s.text));
     console.log(analyzedBy);
   }

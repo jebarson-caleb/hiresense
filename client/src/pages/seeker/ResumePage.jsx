@@ -28,7 +28,7 @@ export default function ResumePage() {
   const upload = async (file) => {
     if (!file) return;
     if (!/\.(pdf|docx|txt)$/i.test(file.name)) return toast('Please choose a PDF, DOCX or TXT file', 'error');
-    if (file.size > 5 * 1024 * 1024) return toast('File is larger than 5 MB', 'error');
+    if (file.size > 4 * 1024 * 1024) return toast('File is larger than 4 MB', 'error');
 
     const body = new FormData();
     body.append('resume', file);
@@ -107,7 +107,7 @@ export default function ResumePage() {
           <>
             <DocIcon />
             <h3>Drag & drop your resume here</h3>
-            <p className="muted">or click to browse · PDF, DOCX or TXT · max 5 MB</p>
+            <p className="muted">or click to browse · PDF, DOCX or TXT · max 4 MB</p>
           </>
         )}
       </div>
